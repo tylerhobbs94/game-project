@@ -8,7 +8,7 @@ from goblin1 import Goblin1
 from goblin2 import Goblin2
 from potion import Potion
 from dragon import Dragon
-def select1(character_selection):
+def select1():
     character_selection = input()
     name = input('\nwhat would you like to name your character? ')
     if character_selection == "1":
@@ -23,6 +23,7 @@ def select1(character_selection):
     # player chose Archer
         my_hero = archer(name)
         print("you have chosen the class Archer! Good luck on your adventure!")
+    return my_hero
 
 def fight1(goblin1, goblin2, my_hero, inventory):
     while goblin1.is_alive() or goblin2.is_alive() and my_hero.is_alive():
@@ -167,8 +168,9 @@ def main():
 
     list1 = ["Character 1: Fighter: 25 health, 8 Power, Character 2: Mage 15 Health, 10 power Character 3: Archer 15 Health, 10 Power"]
     print(list1)
-    select1
-    my_hero = ()
+    # my_hero = ()
+
+    my_hero = select1()
     # character_selection = input()
     # name = input('\nwhat would you like to name your character? ')
     # if character_selection == "1":
@@ -194,8 +196,8 @@ def main():
 
     
 
-    print("\n\n\nNow " + name +  " sets out on their adventure..  " + name +  "walks until the see a fork in the road")
-    print("..while pondering their decision " + name + " hears a woman scream out in the distance!")
+    print("\n\n\nNow " + my_hero.name +  " sets out on their adventure..  " + my_hero.name +  "walks until the see a fork in the road")
+    print("..while pondering their decision " + my_hero.name + " hears a woman scream out in the distance!")
 
 
     print("\n Go towards the scream or go to opposite way? Yes or No. ")
@@ -225,6 +227,6 @@ def main():
     print("\n\nYou destoy the two goblins with ease and look around for the third goblin.")
     print("\nYou continue up the road searching around and come across and old lady who seems to be struggling")
     print("\nDo you help the old lady? Yes or No?")
-    help1(my_hero, name,dragon,inventory,ogre)
-    help1(my_hero, name,dragon,inventory,ogre)
+    help1(my_hero, my_hero.name, dragon,inventory,ogre)
+    help1(my_hero, my_hero.name, dragon,inventory,ogre)
 main()
