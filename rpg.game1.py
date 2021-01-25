@@ -8,6 +8,7 @@ from goblin1 import Goblin1
 from goblin2 import Goblin2
 from potion import Potion
 from dragon import Dragon
+from color import color
 def select1():
     character_selection = input()
     name = input('\nwhat would you like to name your character? ')
@@ -24,7 +25,18 @@ def select1():
         my_hero = archer(name)
         print("you have chosen the class Archer! Good luck on your adventure!")
     return my_hero
+def decision1():
+    decision1 = input()
+    decision1 = decision1.upper()
+    if decision1 == "YES":
+            print("\nYou go towards the scream full sprint trying to see where the sound came from.")
+            print("\n\nas you continue down the path you run across three goblins, one has a princess!")
+            print('\n the goblin with the princess runs off and the other two goblins turn to fight you.. Prepare for a fight!')
+    elif decision1 == "NO":
+        print("\nyou're a coward and as you try the go the other way you feel a magical urge push you the way towards the scream.")
 
+        print("\n\nas you continue down the path you run across three goblins, one has a princess!")
+        print('\n the goblin with the princess runs off and the other two goblins turn to fight you.. Prepare for a fight!')
 def fight1(goblin1, goblin2, my_hero, inventory):
     while goblin1.is_alive() or goblin2.is_alive() and my_hero.is_alive():
         my_hero.print_status()
@@ -95,7 +107,7 @@ def fight2(ogre, my_hero, inventory):
             print("\n\nAfter your fierce fight with the Ogre you take the keys from his belt and free's the princess")
             print("She goes to give you a reward All of the sudden the ground starts to shake and you see spikes emerge from the outskirts of the city.")
             ("You feel as the spikes are pulling you down and start to look around as you see Hell all around you...What will you do next?")
-            print("\n\n\n The End.")
+            print((color.BOLD  + color.RED + '\n\nTHE END.' + color.END))
 def fight3(dragon, my_hero, inventory):
     while dragon.is_alive() and my_hero.is_alive():
 
@@ -131,7 +143,7 @@ def fight3(dragon, my_hero, inventory):
                     if dragon.health <= 0:
                         print("You slay the dragon and save the princess....All of the sudden the ground starts to shake and you see spikes emerge from the outskirts of the city.")
                         print("You feel as the spikes are pulling you down and start to look around as you see Hell all around you...What will you do next?")
-
+                        print((color.BOLD  + color.RED + '\n\nTHE END' + color.END))
 def help1(my_hero, name,dragon,inventory,ogre): 
      Help1 = input()
      Help1 = Help1.upper()
@@ -171,21 +183,6 @@ def main():
     # my_hero = ()
 
     my_hero = select1()
-    # character_selection = input()
-    # name = input('\nwhat would you like to name your character? ')
-    # if character_selection == "1":
-    # # Player chose Fighter
-    #     my_hero = fighter(name)
-    #     print("You have chosen the class Fighter! Good luck on your adventure!")
-    # elif character_selection == "2":
-    # # player chose Mage.
-    #     my_hero = mage(name)
-    #     print("You have chosen the class Mage! Good luck on your adventure wizard!")
-    # elif character_selection == "3":
-    # # player chose Archer
-    #     my_hero = archer(name)
-    #     print("you have chosen the class Archer! Good luck on your adventure!")
-
 
     print("press I to access inventory now")
     bag = input()
@@ -194,27 +191,12 @@ def main():
     print(inventory['potions'])
     print(inventory['Currency'])
 
-    
-
-    print("\n\n\nNow " + my_hero.name +  " sets out on their adventure..  " + my_hero.name +  "walks until the see a fork in the road")
+    print("\n\n\nNow " + my_hero.name +  " sets out on their adventure..  " + my_hero.name +  " walks until the see a fork in the road")
     print("..while pondering their decision " + my_hero.name + " hears a woman scream out in the distance!")
-
 
     print("\n Go towards the scream or go to opposite way? Yes or No. ")
 
-
-    decision1 = input()
-    decision1 = decision1.upper()
-    if decision1 == "YES":
-            print("\nYou go towards the scream full sprint trying to see where the sound came from.")
-            print("\n\nas you continue down the path you run across three goblins, one has a princess!")
-            print('\n the goblin with the princess runs off and the other two goblins turn to fight you.. Prepare for a fight!')
-    elif decision1 == "NO":
-        print("\nyou're a coward and as you try the go the other way you feel a magical urge push you the way towards the scream.")
-
-        print("\n\nas you continue down the path you run across three goblins, one has a princess!")
-        print('\n the goblin with the princess runs off and the other two goblins turn to fight you.. Prepare for a fight!')
-
+    decision1()
     print()
     print("What do you want to do?")
     print("1. attack first goblin")
