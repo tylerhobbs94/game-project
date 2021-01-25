@@ -8,6 +8,21 @@ from goblin1 import Goblin1
 from goblin2 import Goblin2
 from potion import Potion
 from dragon import Dragon
+def select1(character_selection):
+    character_selection = input()
+    name = input('\nwhat would you like to name your character? ')
+    if character_selection == "1":
+    # Player chose Fighter
+        my_hero = fighter(name)
+        print("You have chosen the class Fighter! Good luck on your adventure!")
+    elif character_selection == "2":
+    # player chose Mage.
+        my_hero = mage(name)
+        print("You have chosen the class Mage! Good luck on your adventure wizard!")
+    elif character_selection == "3":
+    # player chose Archer
+        my_hero = archer(name)
+        print("you have chosen the class Archer! Good luck on your adventure!")
 
 def fight1(goblin1, goblin2, my_hero, inventory):
     while goblin1.is_alive() or goblin2.is_alive() and my_hero.is_alive():
@@ -41,49 +56,47 @@ def fight1(goblin1, goblin2, my_hero, inventory):
             break
 def fight2(ogre, my_hero, inventory):
     while ogre.is_alive() and my_hero.is_alive():
-        if help1 == "YES":
-            my_hero.print_status()
-            ogre.print_status()
+    
+        my_hero.print_status()
+        ogre.print_status()
 
-            print()
-            print("What do you want to do?")
-            print("1. attack Ogre")
-            print('2. Drink a health potion')
-            print('3. Run past the Ogre')
-            print('4. Run away little girl...Run away.')
+        print()
+        print("What do you want to do?")
+        print("1. attack Ogre")
+        print('2. Drink a health potion')
+        print('3. Run past the Ogre')
+        print('4. Run away little girl...Run away.')
 
-            user_input = input()
-            if user_input == "1":
-                # Hero attacks goblin
-                my_hero.attack(ogre)
-                if ogre.health > 0:
-                # orge attacks hero
+        user_input = input()
+        if user_input == "1":
+            # Hero attacks goblin
+            my_hero.attack(ogre)
+            if ogre.health > 0:
+            # orge attacks hero
+                ogre.attack(my_hero)
+        elif user_input == '2':
+        #hero uses a health potion.
+            if inventory['potions']["health potions"] > 0:
+                Potion.heals(my_hero)
+                inventory["potions"]["health potions"] -=1
+            print(inventory['potions'])
+        elif user_input == '3':
+            #hero tries to run past ogre to get inside
+            if ogre.health > 0:
+                # ogre attacks hero
                     ogre.attack(my_hero)
-            elif user_input == '2':
-            #hero uses a health potion.
-                if inventory['potions']["health potions"] > 0:
-                    Potion.heals(my_hero)
-                    inventory["potions"]["health potions"] -=1
-                    print(inventory['potions'])
-            elif user_input == '3':
-                #hero tries to run past ogre to get inside
-                if ogre.health > 0:
-                    # ogre attacks hero
-                        ogre.attack(my_hero)
-                        print("Ouch that hurt, lets not try that again.")
-            elif user_input == '4':
-                #hero Flees
-                break
-            print(ogre.health)
-            if ogre.health <= 0:
-                print("\n\nAfter your fierce fight with the Ogre you take the keys from his belt and free's the princess")
-                print("She goes to give you a reward All of the sudden the ground starts to shake and you see spikes emerge from the outskirts of the city.")
-                ("You feel as the spikes are pulling you down and start to look around as you see Hell all around you...What will you do next?")
-                print("\n\n\n The End.")
+                    print("Ouch that hurt, lets not try that again.")
+        elif user_input == '4':
+            #hero Flees
+            break
+        print(ogre.health)
+        if ogre.health <= 0:
+            print("\n\nAfter your fierce fight with the Ogre you take the keys from his belt and free's the princess")
+            print("She goes to give you a reward All of the sudden the ground starts to shake and you see spikes emerge from the outskirts of the city.")
+            ("You feel as the spikes are pulling you down and start to look around as you see Hell all around you...What will you do next?")
+            print("\n\n\n The End.")
 def fight3(dragon, my_hero, inventory):
     while dragon.is_alive() and my_hero.is_alive():
-                    # my_hero.print_status
-                    # dragon.print_status
 
                     print()
                     print("What do you want to do?")
@@ -118,7 +131,7 @@ def fight3(dragon, my_hero, inventory):
                         print("You slay the dragon and save the princess....All of the sudden the ground starts to shake and you see spikes emerge from the outskirts of the city.")
                         print("You feel as the spikes are pulling you down and start to look around as you see Hell all around you...What will you do next?")
 
-def help1(my_hero, name): 
+def help1(my_hero, name,dragon,inventory,ogre): 
      Help1 = input()
      Help1 = Help1.upper()
      if Help1 == "YES":
@@ -127,6 +140,7 @@ def help1(my_hero, name):
         print(" Are level up's real??")
         my_hero.level_up()
         my_hero.print_status()
+        fight2(ogre, my_hero, inventory)
      elif Help1 == "NO":
         print("\nYou ignore the old lady because thats not your problem and continue on your way.")
         print("\nas you continue up the road you notice the clouds above turn black and turn around and the old lady is gone.")
@@ -135,7 +149,7 @@ def help1(my_hero, name):
         print("\nAs " + name  + " reaches the top of the road he see's a tower and the goblin throwing the princess in the tower and locking her inside.")
         print("As you get closer the goblin notices you and starts to laugh.. he seems to glow red and starts growing in size.")
         print("The Goblin now has turned into an Ogre!! ")
-     return Help1
+        fight3(dragon, my_hero, inventory)
 
 def main():
     goblin1 = Goblin1()
@@ -153,23 +167,22 @@ def main():
 
     list1 = ["Character 1: Fighter: 25 health, 8 Power, Character 2: Mage 15 Health, 10 power Character 3: Archer 15 Health, 10 Power"]
     print(list1)
-
+    select1
     my_hero = ()
-
-    character_selection = input()
-    name = input('\nwhat would you like to name your character? ')
-    if character_selection == "1":
-    # Player chose Fighter
-        my_hero = fighter(name)
-        print("You have chosen the class Fighter! Good luck on your adventure!")
-    elif character_selection == "2":
-    # player chose Mage.
-        my_hero = mage(name)
-        print("You have chosen the class Mage! Good luck on your adventure wizard!")
-    elif character_selection == "3":
-    # player chose Archer
-        my_hero = archer(name)
-        print("you have chosen the class Archer! Good luck on your adventure!")
+    # character_selection = input()
+    # name = input('\nwhat would you like to name your character? ')
+    # if character_selection == "1":
+    # # Player chose Fighter
+    #     my_hero = fighter(name)
+    #     print("You have chosen the class Fighter! Good luck on your adventure!")
+    # elif character_selection == "2":
+    # # player chose Mage.
+    #     my_hero = mage(name)
+    #     print("You have chosen the class Mage! Good luck on your adventure wizard!")
+    # elif character_selection == "3":
+    # # player chose Archer
+    #     my_hero = archer(name)
+    #     print("you have chosen the class Archer! Good luck on your adventure!")
 
 
     print("press I to access inventory now")
@@ -212,12 +225,6 @@ def main():
     print("\n\nYou destoy the two goblins with ease and look around for the third goblin.")
     print("\nYou continue up the road searching around and come across and old lady who seems to be struggling")
     print("\nDo you help the old lady? Yes or No?")
-    Help1 = help1(my_hero, name)
-    fight2(ogre, my_hero, inventory)
-    Help1 = help1(my_hero, name)
-    # if Help1 == "NO":
-    #         print("As you get ready to fight the ogre, you see the little old lady from earlier emerge from the bush..")
-    #         print("She lifts up a finger and zaps the Ogre instantly killing it and looks to you and her eyes start to glow red.")
-    #         print("She suddenly transforms into a dragon and starts towards you and does not looks friendly, I bet you wish you helped her now.")
-    fight3(dragon, my_hero, inventory)
+    help1(my_hero, name,dragon,inventory,ogre)
+    help1(my_hero, name,dragon,inventory,ogre)
 main()
