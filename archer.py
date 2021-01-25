@@ -2,7 +2,7 @@ from Champion import champion
 import random
 
 class archer(champion):
-    def __init__(self,name,  health = 15, power = 9):
+    def __init__(self,name,  health = 15, power = 10):
         self.health = health
         self.power = power
         self.name = name
