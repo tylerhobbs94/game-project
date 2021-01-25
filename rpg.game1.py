@@ -1,4 +1,3 @@
-
 from ogre import Ogre
 from Fighter import fighter
 from archer import archer
@@ -74,11 +73,11 @@ def fight2(ogre, my_hero, inventory):
         ogre.print_status()
 
         print()
-        print("What do you want to do?")
-        print("1. attack Ogre")
-        print('2. Drink a health potion')
-        print('3. Run past the Ogre')
-        print('4. Run away little girl...Run away.')
+        print(color.PURPLE + "What do you want to do?" + color.END)
+        print("1." + color.RED + "attack Ogre" + color.END)
+        print('2.' + color.GREEN + 'Drink a health potion' + color.END)
+        print('3.' + color.BLUE + 'Run past the Ogre' + color.END)
+        print('4.' + color.YELLOW +  'Run away little girl...Run away.' + color.END)
 
         user_input = input()
         if user_input == "1":
@@ -113,9 +112,9 @@ def fight3(dragon, my_hero, inventory):
 
                     print()
                     print("What do you want to do?")
-                    print("1. attack dragon")
-                    print('2. Drink a health potion')
-                    print('4. Run away little girl...Run away.')
+                    print("1." + color.RED + "attack dragon" + color.END)
+                    print("2." + color.GREEN + 'Drink a health potion' + color.END)
+                    print('4.' + color.YELLOW + 'Run away little girl...Run away.' + color.END)
                     user_input = input()
                     if user_input == "1":
                                 # Hero attacks goblin
@@ -154,6 +153,7 @@ def help1(my_hero, name,dragon,inventory,ogre):
         my_hero.level_up()
         my_hero.print_status()
         fight2(ogre, my_hero, inventory)
+        #added fight2 function and who they fight.
      elif Help1 == "NO":
         print("\nYou ignore the old lady because thats not your problem and continue on your way.")
         print("\nas you continue up the road you notice the clouds above turn black and turn around and the old lady is gone.")
@@ -163,7 +163,7 @@ def help1(my_hero, name,dragon,inventory,ogre):
         print("As you get closer the goblin notices you and starts to laugh.. he seems to glow red and starts growing in size.")
         print("The Goblin now has turned into an Ogre!! ")
         fight3(dragon, my_hero, inventory)
-
+        # added fight 3 function and who they do fight ^
 def main():
     goblin1 = Goblin1()
     goblin2 = Goblin2()
@@ -176,11 +176,10 @@ def main():
         "Currency": ['4 gold', '20 silver'] 
     }
 
-    print("This is a simple a game, choose your character and go on a small adventure!")
+    print("This is a simple a game, choose your character and go on an adventure!")
 
-    list1 = ["Character 1: Fighter: 25 health, 8 Power, Character 2: Mage 15 Health, 10 power Character 3: Archer 15 Health, 10 Power"]
+    list1 = ["Character 1: Fighter:" "25 health, 8 Power," "Character 2: Mage 15 Health, 10 power Character 3: Archer 15 Health, 10 Power "]
     print(list1)
-    # my_hero = ()
 
     my_hero = select1()
 
@@ -198,12 +197,12 @@ def main():
 
     decision1()
     print()
-    print("What do you want to do?")
-    print("1. attack first goblin")
-    print("2. attack second goblin")
-    print("3. Use a potion")
-    print("4. Do nothing")
-    print("5. Flee")
+    print(color.PURPLE + "What do you want to do?" + color.END)
+    print("1." + color.RED + "attack first goblin" + color.END)
+    print("2." + color.RED + "attack second goblin" + color.END)
+    print("3." + color.GREEN + "Use a potion" + color.END)
+    print("4." + color.BLUE+ "Do nothing" + color.END)
+    print("5." + color.YELLOW + "Flee" + color.END)
     fight1(goblin1,goblin2,my_hero,inventory)
 
     print("\n\nYou destoy the two goblins with ease and look around for the third goblin.")
