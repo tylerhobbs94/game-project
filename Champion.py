@@ -24,4 +24,4 @@ class champion:
     
     def level_up(self):
         self.health = self.health * 3
-        self.power = self.power * 5
+        self.power = self.power * 3

@@ -103,13 +103,14 @@ def fight2(ogre, my_hero, inventory):
             break
         print(ogre.health)
         if ogre.health <= 0:
-            print("\n\nAfter your fierce fight with the Ogre you take the keys from his belt and free's the princess")
+            print("\n\nAfter your fierce fight with the Ogre you take the keys from his belt and free the princess")
             print("She goes to give you a reward All of the sudden the ground starts to shake and you see spikes emerge from the outskirts of the city.")
-            ("You feel as the spikes are pulling you down and start to look around as you see Hell all around you...What will you do next?")
-            print((color.BOLD  + color.RED + '\n\nTHE END.' + color.END))
+            print("You feel as the spikes are pulling you down and start to look around as you see Hell all around " + my_hero.name + "...What will happen next?")
+            print((color.BOLD  + color.RED + '\n\nTO BE CONTINUED' + color.END))
 def fight3(dragon, my_hero, inventory):
     while dragon.is_alive() and my_hero.is_alive():
-
+                    my_hero.print_status()
+                    dragon.print_status()
                     print()
                     print("What do you want to do?")
                     print("1." + color.RED + "attack dragon" + color.END)
@@ -137,12 +138,11 @@ def fight3(dragon, my_hero, inventory):
                     elif user_input == '4':
                                 #hero Flees
                                 break
-                    my_hero.print_status
-                    dragon.print_status
+            
                     if dragon.health <= 0:
-                        print("You slay the dragon and save the princess....All of the sudden the ground starts to shake and you see spikes emerge from the outskirts of the city.")
-                        print("You feel as the spikes are pulling you down and start to look around as you see Hell all around you...What will you do next?")
-                        print((color.BOLD  + color.RED + '\n\nTHE END' + color.END))
+                        print("\n\nYou slay the dragon and save the princess....All of the sudden the ground starts to shake and you see spikes emerge from the outskirts of the city.")
+                        print("You feel as the spikes are pulling you down and start to look around as you see Hell all around " + my_hero.name + " ... What will you do next?")
+                        print((color.BOLD  + color.RED + '\n\nTO BE CONTINUED' + color.END))
 def help1(my_hero, name,dragon,inventory,ogre): 
      Help1 = input()
      Help1 = Help1.upper()
