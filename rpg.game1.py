@@ -178,7 +178,7 @@ def main():
 
     print("This is a simple a game, choose your character and go on an adventure!")
 
-    list1 = ["Character 1: Fighter:" "25 health, 8 Power," "Character 2: Mage 15 Health, 10 power Character 3: Archer 15 Health, 10 Power "]
+    list1 = ["Character 1: Fighter:" "25 health, 8 Power," "Character 2: Mage 17 Health, 10 power Character 3: Archer 17 Health, 10 Power "]
     print(list1)
 
     my_hero = select1()

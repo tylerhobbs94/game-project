@@ -2,7 +2,7 @@ from Champion import champion
 import random
 
 class fighter(champion):
-    def __init__(self,name,health = 25, power = 9,):
+    def __init__(self,name,health = 25, power = 8,):
         self.health = health
         self.power = power
         self.name = name
